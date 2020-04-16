@@ -24,7 +24,9 @@
 
     <hr />
 
-    <input type="text" v-model="name" />
+    {{ user }}
+
+    <input type="text" v-model="userName" />
   </div>
 </template>
 
@@ -45,11 +47,10 @@ export default {
     Comp002,
   },
   computed: {
-    ...mapState(['count']),
-    // ...mapState('user', ['name', 'age']),
-    name: {
+    ...mapState(['count', 'user']),
+    userName: {
       get() {
-        return this.$store.state.user.name;
+        return this.user.name;
       },
       set(value) {
         this.$store.commit('user/' + MUTATION_TYPES.USER.CHANGE_NAME, value);
